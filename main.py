@@ -1,3 +1,50 @@
+# Function to add two matrices
+def add_matrices():
+    #Get the matrix dimentions (row and columns)
+    rows = int(input("Enter the number of rows: "))
+    columns = int(input("Enter the number of culomns: "))
+
+    #initialize two matrices
+    matrix1 = []
+    matrix2 = []
+
+    #prompt for the first matrix elements
+    print("Enter elements of the first matrix:")
+    for _ in range(rows):
+        row = []
+        for _ in range(columns):
+            element = int(input("enter an element: "))
+            row.append(element)
+        matrix1.append(row)
+     
+    #prompt for the first matrix elements
+    print("Enter elements of the second matrix:")
+    for _ in range(rows):
+        row = []
+        for _ in range(columns):
+            element = int(input("enter an element: "))
+            row.append(element)
+        matrix2.append(row)
+
+    #perform matrix addition
+    result = [[0]*columns for _ in range(rows)]
+    for i in range(rows):
+        for j in range(columns):
+            result[i][j] = matrix1[i][j] + matrix2[i][j]
+
+    # Display the matrices and their addition result
+    print("Matrix 1:")
+    for row in matrix1:
+        print(row)
+
+    print("Matrix 2:")
+    for row in matrix2:
+        print(row)
+
+    print("Matrix 1 + Matrix 2:")
+    for row in result:
+        print(row)
+
 # Main function
 def main():
   # Get the user's name
@@ -35,4 +82,4 @@ def main():
             print("Invalid choice. Please select a valid option (1-7).")
 
 if __name__ == "__main__":
-    main()
+     main()
