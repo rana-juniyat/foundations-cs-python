@@ -27,10 +27,12 @@ def add_matrices():
         matrix2.append(row)
 
     #perform matrix addition
-    result = [[0]*columns for _ in range(rows)]
+    result_matrix = []
     for i in range(rows):
+        result_row=[]
         for j in range(columns):
-            result[i][j] = matrix1[i][j] + matrix2[i][j]
+             result_row.append(matrix1[i][j]+matrix2[i][j])
+        result_matrix.append(result_row)
 
     # Display the matrices and their addition result
     print("Matrix 1:")
@@ -42,8 +44,63 @@ def add_matrices():
         print(row)
 
     print("Matrix 1 + Matrix 2:")
-    for row in result:
-        print(row)
+    for row in result_matrix:
+        print(row)        
+
+#################################################################################################
+
+#Function to check if one matrics is rotation of another
+def check_rotation():
+    # Get the dimentions (rows and columns) of the first matrix
+    rows1 = int(input("Enter the number of rows in the first matrix: "))
+    columns1 = int(input("Enter the number of culomns in the first matrix: "))
+
+    #initialize the first matrix
+    matrix1 = []
+    print("Enter elements of the first matrix:")
+    for _ in range(rows1):
+        row = []
+        for _ in range(columns1):
+            element = int(input("enter an element: "))
+            row.append(element)
+        matrix1.append(row) 
+
+    # Get the dimentions (rows and columns) of the first matrix
+    rows2 = int(input("Enter the number of rows in the second matrix: "))
+    columns2 = int(input("Enter the number of culomns in the second matrix: "))
+
+    #initialize the second matrix
+    matrix2 = []
+    print("Enter elements of the second matrix:")
+    for _ in range(rows2):
+        row = []
+        for _ in range(columns2):
+            element = int(input("enter an element: "))
+            row.append(element)
+        matrix2.append(row)
+
+    # Check if one matrix is a rotation of the other
+    if rows1==columns2 and rows2==columns1:
+        #Transpose the first matrix to check if it matches the second matrix
+        transpose_matrix1=[]
+        for i in range(columns1):
+            row = []
+            for j in range(rows1):
+                row.append(matrix1[j][i])
+            transpose_matrix1.append(row)
+        
+        if transpose_matrix1 == matrix2:
+            print("The second matrix is a rotation of the first matrix.")
+        else:
+            print("The second matrix is not a rotation of the first matrix.")
+
+    else:
+        print("The matrices cannot be compared for rotation")
+##################################################################################################
+
+
+
+##################################################################################################
 
 # Main function
 def main():
