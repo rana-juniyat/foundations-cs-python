@@ -47,6 +47,9 @@ def add_matrices():
     for row in result_matrix:
         print(row)        
 
+# Time Complexity: O(rows * columns) >> O(n^2)
+# Justification: The function loops through both matrices, which have 'rows' rows and 'columns' columns.
+
 #################################################################################################
 
 #Function to check if one matrics is rotation of another
@@ -96,6 +99,10 @@ def check_rotation():
 
     else:
         print("The matrices cannot be compared for rotation")
+
+# Time Complexity: O(rows1 * columns1) >> O(n^2)
+# Justification: The function compares elements in the first matrix, which has 'rows1' rows and 'columns1' columns.
+
 ##################################################################################################
 
 #Function to creat and invert a dictionary
@@ -128,6 +135,9 @@ def invert_dictionary():
     print("After inverting:")
     print(inverted_dict)
 
+# Time Complexity: O(n), where 'n' is the number of key-value pairs in the dictionary
+# Justification: The function iterates through the key-value pairs to invert the dictionary.
+
 ##################################################################################################
 
 # Function to create a user data matrix and convert it into a dictionary
@@ -155,6 +165,9 @@ def convert_matrix_to_dict():
     # Display the user dictionary
     print("User Dictionary:")
     print(user_dictionary)
+
+# Time Complexity: O(n), where 'n' is the number of rows in the user data matrix
+# Justification: The function collects user data in a matrix with 'n' rows and then converts it into a dictionary
     
 ##################################################################################################
 
@@ -184,6 +197,8 @@ if check_palindrome(user_input):
 else:
     print("The string is not a palindrome.")
 
+# Time Complexity: O(n), where 'n' is the length of the input string
+# Justification: The recursive function checks each character in the string for palindrome properties.
 
 ##################################################################################################
 
