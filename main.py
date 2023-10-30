@@ -130,8 +130,32 @@ def invert_dictionary():
 
 ##################################################################################################
 
+# Function to create a user data matrix and convert it into a dictionary
+def convert_matrix_to_dict():
+    user_data_matrix = []
 
+    # Prompt the user to enter user data in the matrix
+    while True:
+        user_data = input("Enter user data (First Name, Last Name, ID, Job Title, Company), or 'done' to finish: ")
+        if user_data == 'done':
+            break
+        user_data_list = user_data.split(", ")
+        if len(user_data_list) != 5:
+            print("Invalid input. Please enter data in the format 'First Name, Last Name, ID, Job Title, Company'.")
+            continue
+        user_data_matrix.append(user_data_list)
 
+    # Convert the matrix into a dictionary
+    user_dictionary = {}
+    for user in user_data_matrix:
+        user_id = user[2]  # ID is the third element
+        user_info = [user[0], user[1], user[3], user[4]]  # First Name, Last Name, Job Title, Company
+        user_dictionary[user_id] = user_info
+
+    # Display the user dictionary
+    print("User Dictionary:")
+    print(user_dictionary)
+    
 ##################################################################################################
 
 # Main function
