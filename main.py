@@ -158,6 +158,35 @@ def convert_matrix_to_dict():
     
 ##################################################################################################
 
+# Recursive function to check if a string is a palindrome
+def check_palindrome():
+    # Base case: an empty string or a string with one character is always a palindrome
+    if len(s) <= 1:
+        return True
+
+    # Compare the first and last characters of the string
+    if s[0] == s[-1]:
+        # Recursively check the rest of the string (excluding the first and last characters)
+        return check_palindrome(s[1:-1])
+
+    # If the first and last characters do not match, it's not a palindrome
+    return False
+
+# Prompt the user for a string
+user_input = input("Enter a string: ")
+
+# Remove spaces and convert to lowercase for case-insensitive comparison
+user_input = user_input.replace(" ", "").lower()
+
+# Check if the input string is a palindrome
+if check_palindrome(user_input):
+    print("The string is a palindrome.")
+else:
+    print("The string is not a palindrome.")
+
+
+##################################################################################################
+
 # Main function
 def main():
   # Get the user's name
