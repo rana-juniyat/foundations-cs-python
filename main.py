@@ -98,6 +98,38 @@ def check_rotation():
         print("The matrices cannot be compared for rotation")
 ##################################################################################################
 
+#Function to creat and invert a dictionary
+def invert_dictionary():
+    #Initialize an empty dictionary
+    original_dict = {}
+
+    #prompt the user to add key-value pairs to the dictionary
+    while True:
+        key=input("Enter a key for (or 'done' to finish):")
+        if key=='done' :
+            break
+        value = input("Enter a value: ")
+        original_dict[key] = value
+
+    #Invert the dictionary
+    inverted_dict = {}
+    for key,value in original_dict.items():
+        if value in inverted_dict:
+            if isinstance(inverted_dict[value], list):
+                inverted_dict[value].append(key)
+            else:
+                inverted_dict[value] = [inverted_dict[value], key]
+        else:
+            inverted_dict[value] = key
+
+    # Display the original and inverted dictionaries
+    print("Before inverting:")
+    print(original_dict)
+    print("After inverting:")
+    print(inverted_dict)
+
+##################################################################################################
+
 
 
 ##################################################################################################
