@@ -1,7 +1,16 @@
+#Global variable to store information about open tabs.
+tabs = []
+# Function to add a new tab
+def open_tab():
+    title = input("Enter the Title of the website: ")
+    url =  input("Enter the URL of the website: ")
+    tab = {"title": title, "url": url, "nested_tabs": []}
+    tabs.append(tab)
+    print("Tab opened successfully!")
 ##########################
 #       Main & Menu
 ##########################
-
+# Function to display the menu options
 def menu():
     print("\nWelcome to the Advanced Browser Tabs Simulation!")
     print("1. Open Tab")
@@ -20,7 +29,7 @@ def main():
         choice = input("Enter your choice (1-9): ")
 
         if choice == "1":
-            add_tab()
+            open_tab()
         elif choice == "2":
             close_tab()
         elif choice == "3":
