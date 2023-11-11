@@ -2,11 +2,16 @@
 tabs = []
 # Function to add a new tab
 def open_tab():
-    title = input("Enter the Title of the website: ")
-    url =  input("Enter the URL of the website: ")
+    title = input("Enter the title of the website: ")
+    url = input("Enter the URL of the website: ")
     tab = {"title": title, "url": url, "nested_tabs": []}
     tabs.append(tab)
-    print("Tab opened successfully!")
+##############################
+def close_tab(index=None):
+    if index is None:
+        tabs.pop()
+    else:
+        tabs.pop(index)
 ##########################
 #       Main & Menu
 ##########################
@@ -30,8 +35,10 @@ def main():
 
         if choice == "1":
             open_tab()
+
         elif choice == "2":
-            close_tab()
+            index = int(input("Enter the index of the tab to close: ") or -1)
+            close_tab(index)
         elif choice == "3":
             switch_tab()
         elif choice == "4":
