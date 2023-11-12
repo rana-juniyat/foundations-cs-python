@@ -1,35 +1,87 @@
-#Global variable to store information about open tabs.
+# Global variables
 tabs = []
 current_tab = None
+###################################################################################################
+#if choice == "1":
+##################
 # Function to add a new tab
 def open_tab():
+    global tabs, current_tab  # Indicate that 'tabs' and 'current_tab' are global variables
+
     title = input("Enter the title of the website: ")
     url = input("Enter the URL of the website: ")
+
+    # Basic input validation
+    if not title or not url:
+        print("Error: Title and URL cannot be empty.")
+        return
+
     tab = {"title": title, "url": url, "nested_tabs": []}
     tabs.append(tab)
-##############################
-# Code for closing a tab
-def close_tab():
-    global current_tab
-    if tabs:
-        index = int(input("Enter the index of the tab to close (default is the last tab): ") or -1)
-        if 0 <= index < len(tabs):
-            closed_tab = tabs.pop(index)
+    current_tab = tab  # Set the current tab to the newly opened tab
+    print(f"Tab '{title}' opened successfully.")
+###################################################################################################
+#elif choice == "2":
+####################
+# Function to close a tab
+def close_tab(index=None):
+    global tabs, current_tab  # Indicate that 'tabs' and 'current_tab' are global variables
+
+    if index is None:
+        # If no index is provided, close the last opened tab
+        if tabs:
+            closed_tab = tabs.pop()
             if current_tab == closed_tab:
                 current_tab = tabs[-1] if tabs else None
-            print(f"Closed tab: {closed_tab['title']}")
+            print(f"Tab '{closed_tab['title']}' closed successfully.")
         else:
-            print("Invalid tab index.")
+            print("No tabs to close.")
+    elif 0 <= index < len(tabs):
+        # Close the tab at the specified index
+        closed_tab = tabs.pop(index)
+        if current_tab == closed_tab:
+            current_tab = tabs[-1] if tabs else None
+        print(f"Tab '{closed_tab['title']}' closed successfully.")
     else:
-        print("No tabs to close.")
+        print("Invalid tab index.")
 
-##############################
+###################################################################################################
+#elif choice == "3":
+####################
 import requests
 from bs4 import BeautifulSoup
+# Assuming we have the 'requests' and 'beautifulsoup4' libraries installed:
+# I installed them using: pip install requests beautifulsoup4
 
-req = requests.get("https://www.geeksforgeeks.org/")
-soup = BeautifulSoup(req.content, "html.parser")
-print(soup.prettify())
+# Function to display the HTML content of a tab's URL
+def switch_tab(index=None):
+    global current_tab  # Indicate that 'current_tab' is a global variable
+
+    if index is None:
+        tab = current_tab
+    elif 0 <= index < len(tabs):
+        tab = tabs[index]
+    else:
+        print("Invalid tab index.")
+        return
+
+    url = tab.get("url")
+    if url:
+        try:
+            response = requests.get(url)
+            response.raise_for_status()  # Check if the request was successful
+            html_content = response.text
+
+            # Use BeautifulSoup to parse and print the HTML content
+            soup = BeautifulSoup(html_content, 'html.parser')
+            print("HTML Content of", tab["title"])
+            print("=========================")
+            print(soup.prettify())
+        except requests.RequestException as e:
+            print(f"Error fetching content: {e}")
+    else:
+        print("Tab has no associated URL.")
+
 ##########################
 #       Main & Menu
 ##########################
@@ -55,9 +107,12 @@ def main():
             open_tab()
 
         elif choice == "2":
-            close_tab(index=None)
+            index = input("Enter the index of the tab to close (default is the last opened tab): ")
+            close_tab(int(index) if index.isdigit() else None)
+
         elif choice == "3":
-            switch_tab(index=None)
+            index = input("Enter the index of the tab to display content (default is the last opened tab): ")
+            switch_tab(int(index) if index.isdigit() else None)
         elif choice == "4":
             display_all_tabs()
         elif choice == "5":
