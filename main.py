@@ -141,7 +141,11 @@ def open_nested_tab():
 ####################
 # Function to clear all opened tabs
 def clear_all_tabs():
-    global tabs, current_tab  # Indicate that 'tabs' and 'current_tab' are global variables
+    global tabs, current_tab 
+
+    if not tabs:
+        print("No tabs to clear.")
+        return
 
     tabs = []  # Clear the list of open tabs
     current_tab = None  # Reset the current tab
