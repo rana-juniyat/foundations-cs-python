@@ -130,6 +130,10 @@ def display_tab(tab, depth):
     # Display nested tabs recursively
     for nested_tab in tab['nested_tabs']:
         display_tab(nested_tab, depth + 1)
+
+#Time Complexity: O(n), where 'n' is the total number of tabs (including nested tabs).
+#Justification: Linear time complexity; the function iterates through all tabs and nested tabs to display them hierarchically.
+
 ##########################################################################################################
 #elif choice == "5":
 ####################
