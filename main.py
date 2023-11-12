@@ -168,6 +168,10 @@ def open_nested_tab():
         print(f"{nested_tab_count} nested tabs created under '{parent_tab['title']}'.")
     else:
         print("Invalid parent tab index.")
+
+#Time Complexity: O(n), where 'n' is the number of nested tabs created.
+#Justification: Linear time complexity; the function iterates through the nested tabs to collect user input.
+
 ##########################################################################################################
 #elif choice == "6":
 ####################
