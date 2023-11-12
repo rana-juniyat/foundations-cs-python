@@ -136,7 +136,16 @@ def open_nested_tab():
         print(f"{nested_tab_count} nested tabs created under '{parent_tab['title']}'.")
     else:
         print("Invalid parent tab index.")
+###################################################################################################
+#elif choice == "6":
+####################
+# Function to clear all opened tabs
+def clear_all_tabs():
+    global tabs, current_tab  # Indicate that 'tabs' and 'current_tab' are global variables
 
+    tabs = []  # Clear the list of open tabs
+    current_tab = None  # Reset the current tab
+    print("All opened tabs cleared.")
 ##########################
 #       Main & Menu
 ##########################
