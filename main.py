@@ -100,6 +100,10 @@ def switch_tab(index=None):
             print(f"Error fetching content: {e}")
     else:
         print("Tab has no associated URL.")
+
+#Time Complexity: O(n), where 'n' is the length of the list of tabs.
+#ustification: Linear time complexity; the function iterates through the list to find the specified or last opened tab.
+
 ##########################################################################################################
 #elif choice == "4":
 ####################
