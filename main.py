@@ -189,6 +189,10 @@ def clear_all_tabs():
     tabs = []  # Clear the list of open tabs
     current_tab = None  # Reset the current tab
     print("All opened tabs cleared.")
+
+#Time Complexity: O(1)
+#Justification: Constant time complexity; involves resetting the list of tabs and the current tab.
+
 ##########################################################################################################
 #elif choice == "7":
 ####################
