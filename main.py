@@ -31,6 +31,7 @@ def open_tab():
 
 #Time Complexity: O(1)
 #Justification: Constant time complexity; the function performs a fixed number of operations regardless of input size.
+
 ##########################################################################################################
 #elif choice == "2":
 ####################
@@ -61,6 +62,7 @@ def close_tab(index=None):
 
 #Time Complexity: O(1)
 #Justification: Similar to open_tab, the function has constant time complexity, performing a fixed number of operations.
+
 ##########################################################################################################
 #elif choice == "3":
 ####################
@@ -101,6 +103,7 @@ def switch_tab(index=None):
 
 #Time Complexity: O(n), where 'n' is the length of the list of tabs.
 #justification: Linear time complexity; the function iterates through the list to find the specified or last opened tab.
+
 ##########################################################################################################
 #elif choice == "4":
 ####################
@@ -130,6 +133,7 @@ def display_tab(tab, depth):
 
 #Time Complexity: O(n), where 'n' is the total number of tabs (including nested tabs).
 #Justification: Linear time complexity; the function iterates through all tabs and nested tabs to display them hierarchically.
+
 ##########################################################################################################
 #elif choice == "5":
 ####################
@@ -167,6 +171,7 @@ def open_nested_tab():
 
 #Time Complexity: O(n), where 'n' is the number of nested tabs created.
 #Justification: Linear time complexity; the function iterates through the nested tabs to collect user input.
+
 ##########################################################################################################
 #elif choice == "6":
 ####################
@@ -187,6 +192,7 @@ def clear_all_tabs():
 
 #Time Complexity: O(1)
 #Justification: Constant time complexity; involves resetting the list of tabs and the current tab.
+
 ##########################################################################################################
 #elif choice == "7":
 ####################
@@ -206,6 +212,7 @@ def save_tabs():
 
 #Time Complexity: O(n), where 'n' is the total number of tabs (including nested tabs).
 #Justification: Linear time complexity; the function iterates through all tabs and nested tabs to save them to a file.
+
 ##########################################################################################################
 #elif choice == "8":
 ####################
@@ -227,6 +234,7 @@ def import_tabs(file_path):
 
 #Time Complexity: O(n), where 'n' is the total number of tabs (including nested tabs) in the file being imported.
 #justification: Linear time complexity; the function processes each tab in the file.
+
 ##########################################################################################################
 #       Main & Menu
 ##########################
