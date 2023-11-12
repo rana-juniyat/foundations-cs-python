@@ -81,6 +81,31 @@ def switch_tab(index=None):
             print(f"Error fetching content: {e}")
     else:
         print("Tab has no associated URL.")
+###################################################################################################
+#elif choice == "4":
+####################
+# Function to display the titles of all open tabs hierarchically
+# Function to display the titles of all open tabs hierarchically
+def display_all_tabs():
+    global tabs  # Indicate that 'tabs' is a global variable
+
+    if not tabs:
+        print("No tabs to display.")
+        return
+
+    print("Open Tabs:")
+    for i, tab in enumerate(tabs):
+        display_tab(tab, depth=0)
+
+# Helper function to display a tab and its nested tabs recursively
+def display_tab(tab, depth):
+    indentation = "  " * depth
+    print(f"{indentation}- {tab['title']}")
+
+    # Display nested tabs recursively
+    for nested_tab in tab['nested_tabs']:
+        display_tab(nested_tab, depth + 1)
+
 
 ##########################
 #       Main & Menu
