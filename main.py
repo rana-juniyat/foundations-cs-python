@@ -232,6 +232,9 @@ def import_tabs(file_path):
     else:
         print(f"File not found: {file_path}")
 
+#Time Complexity: O(n), where 'n' is the total number of tabs (including nested tabs) in the file being imported.
+#ustification: Linear time complexity; the function processes each tab in the file.
+
 ##########################################################################################################
 #       Main & Menu
 ##########################
@@ -285,3 +288,8 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+# Reference: https://www.youtube.com/watch?v=O6nnVHPjcJU&t=305s
+# Reference: https://www.geeksforgeeks.org/reading-and-writing-json-to-a-file-in-python/amp/
+# Reference: https://www.youtube.com/watch?v=8Or-JBcU0Ro
+# Reference: https://www.w3schools.com/python/python_try_except.asp
