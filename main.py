@@ -1,5 +1,6 @@
 #Global variable to store information about open tabs.
 tabs = []
+current_tab = None
 # Function to add a new tab
 def open_tab():
     title = input("Enter the title of the website: ")
@@ -7,11 +8,28 @@ def open_tab():
     tab = {"title": title, "url": url, "nested_tabs": []}
     tabs.append(tab)
 ##############################
-def close_tab(index=None):
-    if index is None:
-        tabs.pop()
+# Code for closing a tab
+def close_tab():
+    global current_tab
+    if tabs:
+        index = int(input("Enter the index of the tab to close (default is the last tab): ") or -1)
+        if 0 <= index < len(tabs):
+            closed_tab = tabs.pop(index)
+            if current_tab == closed_tab:
+                current_tab = tabs[-1] if tabs else None
+            print(f"Closed tab: {closed_tab['title']}")
+        else:
+            print("Invalid tab index.")
     else:
-        tabs.pop(index)
+        print("No tabs to close.")
+
+##############################
+import requests
+from bs4 import BeautifulSoup
+
+req = requests.get("https://www.geeksforgeeks.org/")
+soup = BeautifulSoup(req.content, "html.parser")
+print(soup.prettify())
 ##########################
 #       Main & Menu
 ##########################
@@ -37,10 +55,9 @@ def main():
             open_tab()
 
         elif choice == "2":
-            index = int(input("Enter the index of the tab to close: ") or -1)
-            close_tab(index)
+            close_tab(index=None)
         elif choice == "3":
-            switch_tab()
+            switch_tab(index=None)
         elif choice == "4":
             display_all_tabs()
         elif choice == "5":
