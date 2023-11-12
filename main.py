@@ -1,3 +1,8 @@
+# Import necessary libraries
+import os
+import json
+import requests
+from bs4 import BeautifulSoup
 # Global variables
 tabs = []
 current_tab = None
@@ -6,7 +11,7 @@ current_tab = None
 ##################
 # Function to add a new tab
 def open_tab():
-    global tabs, current_tab  # Indicate that 'tabs' and 'current_tab' are global variables
+    global tabs, current_tab  
 
     title = input("Enter the title of the website: ")
     url = input("Enter the URL of the website: ")
@@ -48,8 +53,6 @@ def close_tab(index=None):
 ###################################################################################################
 #elif choice == "3":
 ####################
-import requests
-from bs4 import BeautifulSoup
 # Assuming we have the 'requests' and 'beautifulsoup4' libraries installed:
 # I installed them using: pip install requests beautifulsoup4
 
@@ -150,6 +153,20 @@ def clear_all_tabs():
     tabs = []  # Clear the list of open tabs
     current_tab = None  # Reset the current tab
     print("All opened tabs cleared.")
+###################################################################################################
+#elif choice == "7":
+####################
+# Function to save tabs to a file
+def save_tabs():
+    global tabs  
+
+    file_path = input("Enter the file path to load tabs from (e.g., C:/path/to/tabs.json): ")
+
+    with open(file_path, 'w') as file:
+        json.dump(tabs, file, indent=2)
+
+    print("Tabs saved successfully.")
+
 ##########################
 #       Main & Menu
 ##########################
@@ -167,6 +184,9 @@ def menu():
     print("9. Exit")
 
 def main():
+    # Print current working directory
+    print("Current Working Directory:", os.getcwd())
+
     while True:
         menu()
         choice = input("Enter your choice (1-9): ")
