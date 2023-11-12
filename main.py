@@ -28,6 +28,10 @@ def open_tab():
     tabs.append(tab)
     current_tab = tab  # Set the current tab to the newly opened tab
     print(f"Tab '{title}' opened successfully.")
+    
+#Time Complexity: O(1)
+#Justification: Constant time complexity; the function performs a fixed number of operations regardless of input size.
+
 ##########################################################################################################
 #elif choice == "2":
 ####################
