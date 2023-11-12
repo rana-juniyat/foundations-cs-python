@@ -64,6 +64,9 @@ def close_tab(index=None):
 
 # Function to display the HTML content of a tab's URL
 def switch_tab(index=None):
+    """
+    Display the HTML content of the specified tab or the last opened tab if no index is provided.
+    """
     global current_tab  # Indicate that 'current_tab' is a global variable
 
     if index is None:
@@ -94,8 +97,10 @@ def switch_tab(index=None):
 #elif choice == "4":
 ####################
 # Function to display the titles of all open tabs hierarchically
-# Function to display the titles of all open tabs hierarchically
 def display_all_tabs():
+    """
+    Display the titles of all open tabs hierarchically.
+    """
     global tabs  # Indicate that 'tabs' is a global variable
 
     if not tabs:
@@ -119,6 +124,9 @@ def display_tab(tab, depth):
 ####################
 # Function to create nested tabs
 def open_nested_tab():
+    """
+    Creats nested tabs under a specified parent tab.
+    """
     global tabs 
 
     if not tabs:
@@ -150,6 +158,9 @@ def open_nested_tab():
 ####################
 # Function to clear all opened tabs
 def clear_all_tabs():
+    """
+    Clears all opened tabs.
+    """
     global tabs, current_tab 
 
     if not tabs:
@@ -164,6 +175,9 @@ def clear_all_tabs():
 ####################
 # Function to save tabs to a file
 def save_tabs():
+    """
+    Saves the current state of open tabs to a file in JSON format.
+    """
     global tabs  
 
     file_path = input("Enter the file path to load tabs from (e.g., C:/path/to/tabs.json): ")
@@ -177,6 +191,9 @@ def save_tabs():
 ####################
 # Function to load tabs from a specified file path
 def import_tabs(file_path):
+    """
+    Loads tabs from a specified file path.
+    """
     if os.path.exists(file_path):
         with open(file_path, 'r') as file:
             try:
