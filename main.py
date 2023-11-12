@@ -209,6 +209,10 @@ def save_tabs():
         json.dump(tabs, file, indent=2)
 
     print("Tabs saved successfully.")
+
+#Time Complexity: O(n), where 'n' is the total number of tabs (including nested tabs).
+#Justification: Linear time complexity; the function iterates through all tabs and nested tabs to save them to a file.
+
 ##########################################################################################################
 #elif choice == "8":
 ####################
