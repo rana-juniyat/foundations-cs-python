@@ -105,7 +105,37 @@ def display_tab(tab, depth):
     # Display nested tabs recursively
     for nested_tab in tab['nested_tabs']:
         display_tab(nested_tab, depth + 1)
+###################################################################################################
+#elif choice == "5":
+####################
+# Function to create nested tabs
+def open_nested_tab():
+    global tabs 
 
+    if not tabs:
+        print("No open tabs to nest under.")
+        return
+
+    index = input("Enter the index of the parent tab where you want to insert nested tabs: ")
+    if not index.isdigit():
+        print("Invalid index. Please enter a valid number.")
+        return
+
+    index = int(index)
+    if 0 <= index < len(tabs):
+        parent_tab = tabs[index]
+        nested_tab_count = int(input("Enter the number of nested tabs you want to create: "))
+
+        for _ in range(nested_tab_count):
+            title = input("Enter the title of the nested tab: ")
+            content = input("Enter the content of the nested tab: ")
+
+            nested_tab = {"title": title, "content": content, "nested_tabs": []}
+            parent_tab['nested_tabs'].append(nested_tab)
+
+        print(f"{nested_tab_count} nested tabs created under '{parent_tab['title']}'.")
+    else:
+        print("Invalid parent tab index.")
 
 ##########################
 #       Main & Menu
