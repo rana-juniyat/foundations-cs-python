@@ -6,11 +6,14 @@ from bs4 import BeautifulSoup
 # Global variables
 tabs = []
 current_tab = None
-###################################################################################################
+##########################################################################################################
 #if choice == "1":
 ##################
 # Function to add a new tab
 def open_tab():
+    """
+    Opens a new tab and sets it as the current tab.
+    """
     global tabs, current_tab  
 
     title = input("Enter the title of the website: ")
@@ -25,11 +28,14 @@ def open_tab():
     tabs.append(tab)
     current_tab = tab  # Set the current tab to the newly opened tab
     print(f"Tab '{title}' opened successfully.")
-###################################################################################################
+##########################################################################################################
 #elif choice == "2":
 ####################
 # Function to close a tab
 def close_tab(index=None):
+    """
+    Chooses the specified tab or the last opened tab if no index is provided.
+    """
     global tabs, current_tab  # Indicate that 'tabs' and 'current_tab' are global variables
 
     if index is None:
@@ -50,7 +56,7 @@ def close_tab(index=None):
     else:
         print("Invalid tab index.")
 
-###################################################################################################
+##########################################################################################################
 #elif choice == "3":
 ####################
 # Assuming we have the 'requests' and 'beautifulsoup4' libraries installed:
@@ -84,7 +90,7 @@ def switch_tab(index=None):
             print(f"Error fetching content: {e}")
     else:
         print("Tab has no associated URL.")
-###################################################################################################
+##########################################################################################################
 #elif choice == "4":
 ####################
 # Function to display the titles of all open tabs hierarchically
@@ -108,7 +114,7 @@ def display_tab(tab, depth):
     # Display nested tabs recursively
     for nested_tab in tab['nested_tabs']:
         display_tab(nested_tab, depth + 1)
-###################################################################################################
+##########################################################################################################
 #elif choice == "5":
 ####################
 # Function to create nested tabs
@@ -139,7 +145,7 @@ def open_nested_tab():
         print(f"{nested_tab_count} nested tabs created under '{parent_tab['title']}'.")
     else:
         print("Invalid parent tab index.")
-###################################################################################################
+##########################################################################################################
 #elif choice == "6":
 ####################
 # Function to clear all opened tabs
@@ -153,7 +159,7 @@ def clear_all_tabs():
     tabs = []  # Clear the list of open tabs
     current_tab = None  # Reset the current tab
     print("All opened tabs cleared.")
-###################################################################################################
+##########################################################################################################
 #elif choice == "7":
 ####################
 # Function to save tabs to a file
@@ -166,8 +172,23 @@ def save_tabs():
         json.dump(tabs, file, indent=2)
 
     print("Tabs saved successfully.")
+##########################################################################################################
+#elif choice == "8":
+####################
+# Function to load tabs from a specified file path
+def import_tabs(file_path):
+    if os.path.exists(file_path):
+        with open(file_path, 'r') as file:
+            try:
+                tabs_data = json.load(file)
+                # Process tabs_data as needed
+                print("Tabs loaded successfully.")
+            except json.JSONDecodeError as e:
+                print(f"Error decoding JSON from file: {e}")
+    else:
+        print(f"File not found: {file_path}")
 
-##########################
+##########################################################################################################
 #       Main & Menu
 ##########################
 # Function to display the menu options
@@ -210,7 +231,8 @@ def main():
         elif choice == "7":
             save_tabs()
         elif choice == "8":
-            import_tabs()
+            file_path = input("Enter the file path to load tabs from (e.g., tabs.json): ")
+            import_tabs(file_path)
         elif choice == "9":
             print("Exiting the program. Goodbye!")
             break
