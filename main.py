@@ -28,7 +28,7 @@ def open_tab():
     tabs.append(tab)
     current_tab = tab  # Set the current tab to the newly opened tab
     print(f"Tab '{title}' opened successfully.")
-    
+
 #Time Complexity: O(1)
 #Justification: Constant time complexity; the function performs a fixed number of operations regardless of input size.
 
@@ -59,6 +59,9 @@ def close_tab(index=None):
         print(f"Tab '{closed_tab['title']}' closed successfully.")
     else:
         print("Invalid tab index.")
+
+#Time Complexity: O(1)
+#Justification: Similar to open_tab, the function has constant time complexity, performing a fixed number of operations.
 
 ##########################################################################################################
 #elif choice == "3":
